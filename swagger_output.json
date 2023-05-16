@@ -1,0 +1,223 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "REST API",
+    "description": ""
+  },
+  "host": "localhost:4000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/api/v1/images/upload": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+              "name": "file",
+              "in": "formData",
+              "description": "Image file",
+              "required": true,
+              "type": "file"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/images/image/{public_id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "public_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "public_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v1/users/signup": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "signupData",
+            "in": "body",
+            "description": "Signup data",
+            "required": true,
+            "schema": {
+            "type": "object",
+            "properties": {
+            "email": {
+            "type": "string"
+            },
+            "password": {
+            "type": "string"
+            },
+            "name": {
+            "type": "string"
+            },
+            "username": {
+            "type": "string"
+            },
+            "bio": {
+            "type": "string"
+            },
+            "website": {
+            "type": "string"
+            },
+            "phoneNumber": {
+            "type": "string"
+            }
+            }
+            }
+            }
+        ],
+        "responses": {}
+      }
+    },
+    "/api/v1/users/login": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "loginData",
+            "in": "body",
+            "description": "Login data",
+            "required": true,
+            "schema": {
+            "type": "object",
+            "properties": {
+            "email": {
+            "type": "string"
+            },
+            "password": {
+            "type": "string"
+            }
+            }
+            }
+            }
+        ],
+        "responses": {}
+      }
+    },
+    "/api/v1/users/{id}": {
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "profileData",
+            "in": "body",
+            "description": "User profile update data",
+            "required": true,
+            "schema": {
+            "type": "object",
+            "properties": {
+            "name": {
+            "type": "string"
+            },
+            "username": {
+            "type": "string"
+            },
+            "bio": {
+            "type": "string"
+            },
+            "website": {
+            "type": "string"
+            },
+            "phoneNumber": {
+            "type": "string"
+            }
+            }
+            }
+            }
+        ],
+        "responses": {}
+      }
+    },
+    "/api/v1/comments/comments": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Comment details",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string"
+                },
+                "imagePublicId": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/v1/comments/{public_id}/comments": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "public_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  }
+}
